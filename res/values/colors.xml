@@ -54,11 +54,11 @@
     <color name="window_background_dark">#101010</color>
     <color name="view_background_black">#000000</color>
     <color name="window_background_black">#101010</color>
-    <color name="primary">#607D8B</color>
-    <color name="primary_dark">#455A64</color>
+    <color name="primary">#354bc1</color>
+    <color name="primary_dark">#3042a7</color>
     <color name="primary_black">#000000</color>
-    <color name="accent">#FF3D00</color>
-    <color name="accent_black">#FF3D00</color>
+    <color name="accent">#dd3962</color>
+    <color name="accent_black">#dd3962</color>
     <color name="analog_clock_bg_color">#21282b</color>
     <color name="analog_clock_hour_hand_color">#ffffff</color>
     <color name="analog_clock_minute_hand_color">#28abe3</color>
