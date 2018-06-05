@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Binder;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -78,17 +79,22 @@ public class DbCities {
      * Return a list will all the user-defined cities objects in the database.
      */
     public static List<DbCity> getCities(ContentResolver contentResolver) {
-        Cursor cursor = contentResolver.query(
-                DbCity.Columns.CONTENT_URI, DbCity.Columns.CITY_QUERY_COLUMNS,
-                null, null, DbCity.Columns.DEFAULT_SORT_ORDER);
-        List<DbCity> cities = new ArrayList<DbCity>();
-        if (cursor != null) {
-            while(cursor.moveToNext()) {
-                cities.add(new DbCity(cursor));
+        final long token = Binder.clearCallingIdentity();
+        try {
+            Cursor cursor = contentResolver.query(
+                    DbCity.Columns.CONTENT_URI, DbCity.Columns.CITY_QUERY_COLUMNS,
+                    null, null, DbCity.Columns.DEFAULT_SORT_ORDER);
+            List<DbCity> cities = new ArrayList<DbCity>();
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    cities.add(new DbCity(cursor));
+                }
+                cursor.close();
             }
-            cursor.close();
+            return cities;
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
-        return cities;
     }
 
     /**
