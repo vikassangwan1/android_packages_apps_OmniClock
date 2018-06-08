@@ -28,6 +28,8 @@ import android.text.TextUtils;
 
 import org.omnirom.deskclock.LogUtils;
 
+import java.util.HashMap;
+
 public class ClockProvider extends ContentProvider {
     private ClockDatabaseHelper mOpenHelper;
     private static final String LOGTAG = ClockProvider.class.getSimpleName();
@@ -49,6 +51,39 @@ public class ClockProvider extends ContentProvider {
         sURLMatcher.addURI(ClockContract.AUTHORITY, "cities/*", CITIES_ID);
     }
 
+
+    private final static HashMap<String, String> sDictProjectionMap;
+
+    static {
+        sDictProjectionMap = new HashMap<String, String>();
+        sDictProjectionMap.put(ClockContract.AlarmsColumns._ID, ClockContract.AlarmsColumns._ID);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.HOUR, ClockContract.AlarmsColumns.HOUR);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.MINUTES, ClockContract.AlarmsColumns.MINUTES);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.DAYS_OF_WEEK, ClockContract.AlarmsColumns.DAYS_OF_WEEK);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.ENABLED, ClockContract.AlarmsColumns.ENABLED);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.VIBRATE, ClockContract.AlarmsColumns.VIBRATE);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.LABEL, ClockContract.AlarmsColumns.LABEL);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.RINGTONE, ClockContract.AlarmsColumns.RINGTONE);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.DELETE_AFTER_USE, ClockContract.AlarmsColumns.DELETE_AFTER_USE);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.INCREASING_VOLUME, ClockContract.AlarmsColumns.INCREASING_VOLUME);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.PRE_ALARM, ClockContract.AlarmsColumns.PRE_ALARM);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.ALARM_VOLUME, ClockContract.AlarmsColumns.ALARM_VOLUME);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.PRE_ALARM_VOLUME, ClockContract.AlarmsColumns.PRE_ALARM_VOLUME);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.PRE_ALARM_TIME, ClockContract.AlarmsColumns.PRE_ALARM_TIME);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.PRE_ALARM_RINGTONE, ClockContract.AlarmsColumns.PRE_ALARM_RINGTONE);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.RANDOM_MODE, ClockContract.AlarmsColumns.RANDOM_MODE);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.RINGTONE_NAME, ClockContract.AlarmsColumns.RINGTONE_NAME);
+        sDictProjectionMap.put(ClockContract.AlarmsColumns.PRE_ALARM_RINGTONE_NAME, ClockContract.AlarmsColumns.PRE_ALARM_RINGTONE_NAME);
+
+        sDictProjectionMap.put(ClockContract.InstancesColumns.YEAR, ClockContract.InstancesColumns.YEAR);
+        sDictProjectionMap.put(ClockContract.InstancesColumns.HOUR, ClockContract.InstancesColumns.HOUR);
+        sDictProjectionMap.put(ClockContract.InstancesColumns.MINUTES, ClockContract.InstancesColumns.MINUTES);
+        sDictProjectionMap.put(ClockContract.InstancesColumns.DAY, ClockContract.InstancesColumns.DAY);
+        sDictProjectionMap.put(ClockContract.InstancesColumns.MONTH, ClockContract.InstancesColumns.MONTH);
+        sDictProjectionMap.put(ClockContract.InstancesColumns.ALARM_ID, ClockContract.InstancesColumns.ALARM_ID);
+        sDictProjectionMap.put(ClockContract.InstancesColumns.ALARM_STATE, ClockContract.InstancesColumns.ALARM_STATE);
+    }
+
     public ClockProvider() {
     }
 
@@ -62,6 +97,8 @@ public class ClockProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projectionIn, String selection, String[] selectionArgs,
             String sort) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        qb.setStrict(true);
+        qb.setProjectionMap(sDictProjectionMap);
 
         // Generate the body of the query
         int match = sURLMatcher.match(uri);

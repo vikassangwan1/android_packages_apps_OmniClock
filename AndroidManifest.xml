@@ -38,7 +38,7 @@
         <provider
             android:name="org.omnirom.deskclock.provider.ClockProvider"
             android:authorities="org.omnirom.deskclock"
-            android:exported="false" />
+            android:exported="true" />
 
         <provider
             android:name="org.omnirom.deskclock.worldclock.db.DbCityProvider"
