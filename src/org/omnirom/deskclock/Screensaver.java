@@ -39,6 +39,7 @@ public class Screensaver extends DreamService {
     private View mContentView, mSaverView;
     private AnalogClock mAnalogClock;
     private TextClock mDigitalClock;
+    private View mDateAlarmLine;
     private String mDateFormat;
     private String mDateFormatForAccessibility;
 
@@ -139,8 +140,7 @@ public class Screensaver extends DreamService {
     }
 
     private void setClockStyle() {
-        Utils.setClockStyle(this, mDigitalClock, mAnalogClock,
-                ScreensaverSettingsActivity.KEY_CLOCK_STYLE);
+        Utils.setClockStyle(this, mDigitalClock, mAnalogClock);
         mSaverView = findViewById(R.id.main_clock);
         boolean dimNightMode = PreferenceManager.getDefaultSharedPreferences(this)
                 .getBoolean(ScreensaverSettingsActivity.KEY_NIGHT_MODE, false);
@@ -152,7 +152,19 @@ public class Screensaver extends DreamService {
         setContentView(R.layout.desk_clock_saver);
         mDigitalClock = (TextClock) findViewById(R.id.digital_clock);
         mAnalogClock = (AnalogClock) findViewById(R.id.analog_clock);
-        mAnalogClock.enableSeconds(false);
+        mAnalogClock.setShowSeconds(false);
+        mDateAlarmLine = findViewById(R.id.date_alarm_line);
+
+        boolean showDateInside = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(SettingsActivity.KEY_ANALOG_SHOW_DATE, false);
+        mAnalogClock.setShowDate(showDateInside);
+        mAnalogClock.setShowAlarm(showDateInside);
+        mDateAlarmLine.setVisibility(showDateInside && Utils.isClockStyleAnalog(this)? View.GONE : View.VISIBLE);
+        mAnalogClock.setShowNumbers(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(SettingsActivity.KEY_ANALOG_SHOW_NUMBERS, false));
+        mAnalogClock.setShowTicks(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(SettingsActivity.KEY_ANALOG_SHOW_TICKS, false));
+
         setClockStyle();
         Utils.setTimeFormat(mDigitalClock, (int) (mDigitalClock.getTextSize() / 3), 0);
 
