@@ -166,7 +166,7 @@
   <string name="color_theme_black">Negre</string>
   <string name="snooze_on_silence_title">Repetició automàtica</string>
   <string name="snooze_on_silence_summary">Repeteix en lloc de descartar després del temps d\'espera de silenci</string>
-  <string name="show_numbers_title">Mostra els números de les hores</string>
+  <string name="show_numbers_title">Mostra els nombres de les hores</string>
   <string name="show_ticks_title">Mostra les marques de les hores</string>
   <string name="show_24_hour_title">Mostra en mode 24h</string>
   <string name="bg_color_title">Color de fons</string>
@@ -175,7 +175,7 @@
   <string name="minute_color_title">Color dels minuts</string>
   <string name="text_color_title">Color del text</string>
   <string name="accent_color_title">Color d\'èmfasi</string>
-  <string name="show_date_and_alarm_title">Mostra la data i l\'alarma dintre</string>
+  <string name="show_date_and_alarm_title">Mostra la data i l\'alarma a dins</string>
   <string name="analog_clock_settings">Rellotge analògic</string>
   <string name="time_zone_settings">Configuració de zona horària</string>
   <string name="binary_gadget">Rellotge binari</string>
