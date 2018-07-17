@@ -166,4 +166,17 @@
   <string name="color_theme_black">黑色</string>
   <string name="snooze_on_silence_title">自動打盹</string>
   <string name="snooze_on_silence_summary">在靜音模式下，是靜音而不是取消</string>
+  <string name="show_numbers_title">顯示小時數字</string>
+  <string name="show_ticks_title">顯示小時標記</string>
+  <string name="show_24_hour_title">顯示 24 小時制</string>
+  <string name="bg_color_title">背景顏色</string>
+  <string name="border_color_title">邊框顏色</string>
+  <string name="hour_color_title">小時顏色</string>
+  <string name="minute_color_title">分鐘顏色</string>
+  <string name="text_color_title">文字顏色</string>
+  <string name="accent_color_title">重點色調</string>
+  <string name="show_date_and_alarm_title">將日期與鬧鐘時間顯示在內</string>
+  <string name="analog_clock_settings">類比時鐘</string>
+  <string name="time_zone_settings">時區設定</string>
+  <string name="binary_gadget">二進位式時鐘</string>
 </resources>

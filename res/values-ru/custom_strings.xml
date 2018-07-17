@@ -166,4 +166,14 @@
   <string name="offline_notif_message">Пожалуйста, измените системные настройки</string>
   <string name="color_theme_black">Чёрная</string>
   <string name="snooze_on_silence_title">Автоматическая отсрочка</string>
+  <string name="show_24_hour_title">24-часовой формат времени</string>
+  <string name="bg_color_title">Цвет фона</string>
+  <string name="border_color_title">Цвет границы</string>
+  <string name="hour_color_title">Цвет часов</string>
+  <string name="minute_color_title">Цвет минут</string>
+  <string name="text_color_title">Цвет текста</string>
+  <string name="accent_color_title">Цвет акцента</string>
+  <string name="analog_clock_settings">Аналоговые часы</string>
+  <string name="time_zone_settings">Настройки часового пояса</string>
+  <string name="binary_gadget">Двоичные часы</string>
 </resources>
